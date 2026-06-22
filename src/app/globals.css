@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: #e7cddd;
+    color: #371c30;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), Georgia, "Times New Roman", serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .vasha-card {
+    @apply rounded-2xl border border-plum-100 bg-white shadow-card;
+  }
+
+  /* AI / lesson long-form text */
+  .vasha-output {
+    @apply whitespace-pre-wrap break-words leading-relaxed text-[15px] text-charcoal;
+  }
+
+  .vasha-output p {
+    margin-bottom: 0.85rem;
+  }
+
+  .vasha-output strong {
+    @apply font-semibold text-plum-700;
+  }
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 0px);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Blinking caret while the AI streams a reply */
+@keyframes vasha-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.vasha-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background-color: #6b3a5b;
+  animation: vasha-blink 1s step-end infinite;
+}
+
+/* Soft, unobtrusive scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d3a9c2 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #d3a9c2;
+  border-radius: 9999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
