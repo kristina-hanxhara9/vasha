@@ -8,7 +8,6 @@ import { useI18n } from "@/lib/i18n/LanguageProvider";
 import { buttonClasses } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import { MACROS, ACCENTS } from "@/lib/content/categories";
 import { PROMPTS } from "@/lib/content/prompts";
 import { cn } from "@/lib/utils";
@@ -83,7 +82,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <SmoothScroll />
       {/* ---------------- Hero (photo background) ---------------- */}
       <section className="relative overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3rem]">
         <div className="absolute inset-0" aria-hidden="true">
