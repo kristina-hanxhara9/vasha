@@ -105,8 +105,8 @@ export default function HomePage() {
             </h1>
             <p className="mt-5 max-w-md text-balance text-lg leading-relaxed text-charcoal/80">
               {loc({
-                sq: "Mjete, komanda dhe burime, të bëra për gratë shqiptare që duan të rriten, të punojnë dhe të ndërtojnë jetën që ëndërrojnë.",
-                en: "Tools, prompts and resources, made for Albanian women who want to grow, work and build the life they dream of.",
+                sq: "Ndihmojmë gratë shqiptare të mësojnë inteligjencën artificiale lehtë dhe shpejt.",
+                en: "We help Albanian women learn artificial intelligence — easily and fast.",
               })}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
@@ -119,13 +119,7 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="mt-7">
-              <p className="max-w-[23rem] text-base font-semibold leading-snug text-plum-700">
-                {loc({
-                  sq: "Ndihmojmë gratë shqiptare të mësojnë inteligjencën artificiale lehtë dhe shpejt.",
-                  en: "We help Albanian women learn artificial intelligence — easily and fast.",
-                })}
-              </p>
-              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+              <ul className="flex flex-wrap gap-x-5 gap-y-2">
                 {[
                   { sq: "Plotësisht falas", en: "Completely free" },
                   { sq: "Në shqip", en: "In Albanian" },
@@ -177,6 +171,24 @@ export default function HomePage() {
               </Reveal>
             );
           })}
+        </div>
+      </section>
+
+      {/* ---------------- Mission (dark plum, besa-style curved separation) ---------------- */}
+      <section className="zone-dark text-white">
+        <div className="mx-auto max-w-4xl px-6 py-16 text-center sm:py-20">
+          <span className="inline-block rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-rose-200">
+            {loc({ sq: "Misioni ynë", en: "Our mission" })}
+          </span>
+          <p className="mx-auto mt-6 max-w-3xl font-display text-3xl font-semibold leading-snug sm:text-4xl">
+            {loc({
+              sq: "Të mbështesim gratë shqiptare që duan të rriten, të punojnë dhe ",
+              en: "To support Albanian women who want to grow, work and ",
+            })}
+            <span className="font-serif italic text-gold-400">
+              {loc({ sq: "të ndërtojnë jetën që ëndërrojnë.", en: "build the life they dream of." })}
+            </span>
+          </p>
         </div>
       </section>
 

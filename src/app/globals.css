@@ -109,6 +109,32 @@
   animation: vasha-sway 5s ease-in-out infinite;
 }
 
+/* besa-style curved separation: a deep-plum "sheet" floating on the ivory
+   canvas, joined by elliptical oval caps top & bottom (mirrors besa's
+   .zone-light, in dark plum instead of black). */
+.zone-dark {
+  position: relative;
+  margin: 6vh 0;
+  background: #311829;
+}
+.zone-dark::before,
+.zone-dark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6vh;
+  background: inherit;
+}
+.zone-dark::before {
+  top: calc(-6vh + 1px);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+.zone-dark::after {
+  bottom: calc(-6vh + 1px);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
 /* Lenis smooth scroll (landing page) */
 html.lenis,
 html.lenis body {
