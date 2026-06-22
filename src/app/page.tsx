@@ -8,6 +8,7 @@ import { useI18n } from "@/lib/i18n/LanguageProvider";
 import { buttonClasses } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { MACROS, ACCENTS } from "@/lib/content/categories";
 import { PROMPTS } from "@/lib/content/prompts";
 import { cn } from "@/lib/utils";
@@ -74,63 +75,6 @@ function StepArt({ n }: { n: number }) {
   );
 }
 
-function MacroArt({ id }: { id: string }) {
-  const p = { viewBox: "0 0 40 40", fill: "currentColor", className: "h-7 w-7", xmlns: "http://www.w3.org/2000/svg" } as const;
-  switch (id) {
-    case "career":
-      return (
-        <svg {...p} aria-hidden="true">
-          <path d="M15 13 v-1.5 a3 3 0 0 1 3-3 h4 a3 3 0 0 1 3 3 V13" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" />
-          <rect x="7" y="13" width="26" height="20" rx="5" />
-          <rect x="7" y="20" width="26" height="3" opacity="0.35" />
-          <rect x="17.5" y="19" width="5" height="5" rx="1.5" opacity="0.55" />
-        </svg>
-      );
-    case "business":
-      return (
-        <svg {...p} aria-hidden="true">
-          <path d="M7 16 l2.5 -6 h21 l2.5 6 z" opacity="0.55" />
-          <rect x="9" y="16" width="22" height="17" rx="2.5" />
-          <rect x="16" y="23" width="8" height="10" rx="1.5" opacity="0.4" />
-        </svg>
-      );
-    case "english":
-      return (
-        <svg {...p} aria-hidden="true">
-          <path d="M9 9 h22 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H18 l-6 5 v-5 H9 a4 4 0 0 1 -4 -4 v-8 a4 4 0 0 1 4 -4 z" />
-          <circle cx="14" cy="17" r="1.8" opacity="0.5" />
-          <circle cx="20" cy="17" r="1.8" opacity="0.5" />
-          <circle cx="26" cy="17" r="1.8" opacity="0.5" />
-        </svg>
-      );
-    case "confidence":
-      return (
-        <svg {...p} aria-hidden="true">
-          <ellipse cx="20" cy="11" rx="4.5" ry="6" />
-          <ellipse cx="29" cy="20" rx="6" ry="4.5" />
-          <ellipse cx="20" cy="29" rx="4.5" ry="6" />
-          <ellipse cx="11" cy="20" rx="6" ry="4.5" />
-          <circle cx="20" cy="20" r="3.8" opacity="0.5" />
-        </svg>
-      );
-    case "motherhood":
-      return (
-        <svg {...p} aria-hidden="true">
-          <path d="M16 31 C8 25.5 4.5 20.5 4.5 15.5 C4.5 12 7 9.7 10 9.7 C12.6 9.7 14.6 11.4 16 13.5 C17.4 11.4 19.4 9.7 22 9.7 C25 9.7 27.5 12 27.5 15.5 C27.5 20.5 24 25.5 16 31 Z" />
-          <path d="M30 20 c2.8 -1.9 4.2 -3.6 4.2 -5.5 c0 -1.5 -1.1 -2.6 -2.5 -2.6 c-1 0 -1.7 0.6 -2.2 1.4 c-0.5 -0.8 -1.2 -1.4 -2.2 -1.4 c-1.4 0 -2.5 1.1 -2.5 2.6 c0 1.9 1.4 3.6 5.2 5.5 z" opacity="0.55" />
-        </svg>
-      );
-    default:
-      return (
-        <svg {...p} aria-hidden="true">
-          <path d="M20 5 c1.6 8 3.6 10 11.5 11.5 c-7.9 1.5 -9.9 3.5 -11.5 11.5 c-1.6 -8 -3.6 -10 -11.5 -11.5 c7.9 -1.5 9.9 -3.5 11.5 -11.5 z" />
-          <circle cx="32" cy="31" r="2.4" opacity="0.6" />
-          <circle cx="9" cy="10" r="1.8" opacity="0.5" />
-        </svg>
-      );
-  }
-}
-
 export default function HomePage() {
   const { loc } = useI18n();
   const router = useRouter();
@@ -139,8 +83,9 @@ export default function HomePage() {
 
   return (
     <div>
+      <SmoothScroll />
       {/* ---------------- Hero (photo background) ---------------- */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3rem]">
         <div className="absolute inset-0" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={heroGirl.src} alt="" className="h-full w-full object-cover object-right" />
@@ -203,27 +148,30 @@ export default function HomePage() {
       </section>
 
       {/* ---------------- Macro categories ---------------- */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <Reveal>
           <h2 className="text-center font-display text-3xl font-semibold text-plum-700 sm:text-4xl">
             {loc({ sq: "Zgjidh atë që të duhet më shumë", en: "Choose what you need most" })}
           </h2>
+          <p className="mx-auto mt-3 max-w-md text-center text-muted">
+            {loc({ sq: "Gjashtë fusha të mëdha. Zgjidh njërën dhe nis.", en: "Six big areas. Pick one and begin." })}
+          </p>
         </Reveal>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {MACROS.map((m, i) => {
             const accent = ACCENTS[m.accent];
             return (
               <Reveal key={m.id} delay={i * 70}>
                 <Link
                   href={m.cat ? `/library?cat=${m.cat}` : "/library"}
-                  className="vasha-card group block h-full p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-soft"
+                  className="group flex h-full flex-col rounded-3xl border border-plum-100 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-rose-200 hover:shadow-soft"
                 >
-                  <span className={cn("grid h-12 w-12 place-items-center rounded-2xl transition-transform duration-300 group-hover:scale-110", accent.tile, accent.icon)}>
-                    <MacroArt id={m.id} />
+                  <span className={cn("font-display text-5xl font-semibold leading-none tabular-nums", accent.icon)}>
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-4 font-semibold text-plum-700">{loc(m.name)}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{loc(m.subtitle)}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-rose-600">
+                  <h3 className="mt-5 text-lg font-semibold text-plum-700">{loc(m.name)}</h3>
+                  <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted">{loc(m.subtitle)}</p>
+                  <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-rose-600">
                     {loc({ sq: "Shiko", en: "Explore" })}
                     <Icon name="ArrowRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </span>
@@ -235,8 +183,8 @@ export default function HomePage() {
       </section>
 
       {/* ---------------- How it works ---------------- */}
-      <section className="border-y border-plum-100 bg-gradient-to-b from-rose-50/60 to-ivory">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
+        <div className="rounded-[2.5rem] bg-gradient-to-b from-rose-100/70 via-rose-50 to-white px-6 py-16 shadow-card sm:px-12 sm:py-20">
           <Reveal>
             <h2 className="text-center font-display text-3xl font-semibold text-plum-700 sm:text-4xl">
               {loc({ sq: "Si funksionon?", en: "How does it work?" })}
@@ -298,7 +246,7 @@ export default function HomePage() {
           </div>
 
           <Reveal delay={120}>
-            <div className="h-full rounded-2xl bg-gradient-to-br from-rose-100 to-rose-50 p-6">
+            <div className="h-full rounded-3xl bg-gradient-to-br from-rose-100 to-rose-50 p-7">
               <h3 className="font-display text-lg font-semibold text-plum-700">
                 {loc({ sq: "Bashkohu me komunitetin!", en: "Join the community!" })}
               </h3>
@@ -325,20 +273,20 @@ export default function HomePage() {
       </section>
 
       {/* ---------------- Empowerment line ---------------- */}
-      <section className="border-y border-plum-100 bg-white/60">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-          <Reveal>
+      <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+        <Reveal>
+          <div className="rounded-[2.5rem] border border-rose-100 bg-gradient-to-r from-rose-50 via-white to-rose-50 px-6 py-14">
             <p className="text-center font-display text-2xl italic text-rose-500 sm:text-3xl">
               {loc({ sq: "Ti je e zonja. Ti je e pathyeshme.", en: "You are capable. You are unbreakable." })}
             </p>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* ---------------- Final CTA ---------------- */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-rose-500 to-plum-700 px-6 py-14 text-center text-white sm:px-12">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-rose-500 to-plum-700 px-6 py-14 text-center text-white sm:px-12">
             <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-rose-500/20 blur-2xl" aria-hidden="true" />
             <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-gold-500/20 blur-2xl" aria-hidden="true" />
             <h2 className="relative font-display text-3xl font-semibold sm:text-4xl">
