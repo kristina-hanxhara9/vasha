@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Icon } from "@/components/ui/Icon";
+import { WomanMark } from "./WomanMark";
 import { cn } from "@/lib/utils";
 
 export function Logo({ className, tagline = true }: { className?: string; tagline?: boolean }) {
@@ -7,9 +7,9 @@ export function Logo({ className, tagline = true }: { className?: string; taglin
     <Link
       href="/"
       aria-label="VASHA"
-      className={cn("inline-flex items-center gap-1.5 text-plum-700", className)}
+      className={cn("inline-flex items-center gap-2 text-plum-700", className)}
     >
-      <Icon name="Crown" className="h-5 w-5 shrink-0 text-gold-500" aria-hidden="true" />
+      <WomanMark className="h-7 w-7 shrink-0" />
       <span className="leading-none">
         <span className="block font-display text-xl font-semibold tracking-[0.12em]">VASHA</span>
         {tagline ? (

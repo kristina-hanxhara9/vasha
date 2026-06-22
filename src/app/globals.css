@@ -93,6 +93,22 @@
   border-radius: 9999px;
 }
 
+@keyframes vasha-sway {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.vasha-woman {
+  transform-box: fill-box;
+  transform-origin: 50% 95%;
+  animation: vasha-sway 5s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.001ms !important;

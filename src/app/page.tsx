@@ -74,6 +74,63 @@ function StepArt({ n }: { n: number }) {
   );
 }
 
+function MacroArt({ id }: { id: string }) {
+  const p = { viewBox: "0 0 40 40", fill: "currentColor", className: "h-7 w-7", xmlns: "http://www.w3.org/2000/svg" } as const;
+  switch (id) {
+    case "career":
+      return (
+        <svg {...p} aria-hidden="true">
+          <path d="M15 13 v-1.5 a3 3 0 0 1 3-3 h4 a3 3 0 0 1 3 3 V13" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" />
+          <rect x="7" y="13" width="26" height="20" rx="5" />
+          <rect x="7" y="20" width="26" height="3" opacity="0.35" />
+          <rect x="17.5" y="19" width="5" height="5" rx="1.5" opacity="0.55" />
+        </svg>
+      );
+    case "business":
+      return (
+        <svg {...p} aria-hidden="true">
+          <path d="M7 16 l2.5 -6 h21 l2.5 6 z" opacity="0.55" />
+          <rect x="9" y="16" width="22" height="17" rx="2.5" />
+          <rect x="16" y="23" width="8" height="10" rx="1.5" opacity="0.4" />
+        </svg>
+      );
+    case "english":
+      return (
+        <svg {...p} aria-hidden="true">
+          <path d="M9 9 h22 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 H18 l-6 5 v-5 H9 a4 4 0 0 1 -4 -4 v-8 a4 4 0 0 1 4 -4 z" />
+          <circle cx="14" cy="17" r="1.8" opacity="0.5" />
+          <circle cx="20" cy="17" r="1.8" opacity="0.5" />
+          <circle cx="26" cy="17" r="1.8" opacity="0.5" />
+        </svg>
+      );
+    case "confidence":
+      return (
+        <svg {...p} aria-hidden="true">
+          <ellipse cx="20" cy="11" rx="4.5" ry="6" />
+          <ellipse cx="29" cy="20" rx="6" ry="4.5" />
+          <ellipse cx="20" cy="29" rx="4.5" ry="6" />
+          <ellipse cx="11" cy="20" rx="6" ry="4.5" />
+          <circle cx="20" cy="20" r="3.8" opacity="0.5" />
+        </svg>
+      );
+    case "motherhood":
+      return (
+        <svg {...p} aria-hidden="true">
+          <path d="M16 31 C8 25.5 4.5 20.5 4.5 15.5 C4.5 12 7 9.7 10 9.7 C12.6 9.7 14.6 11.4 16 13.5 C17.4 11.4 19.4 9.7 22 9.7 C25 9.7 27.5 12 27.5 15.5 C27.5 20.5 24 25.5 16 31 Z" />
+          <path d="M30 20 c2.8 -1.9 4.2 -3.6 4.2 -5.5 c0 -1.5 -1.1 -2.6 -2.5 -2.6 c-1 0 -1.7 0.6 -2.2 1.4 c-0.5 -0.8 -1.2 -1.4 -2.2 -1.4 c-1.4 0 -2.5 1.1 -2.5 2.6 c0 1.9 1.4 3.6 5.2 5.5 z" opacity="0.55" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...p} aria-hidden="true">
+          <path d="M20 5 c1.6 8 3.6 10 11.5 11.5 c-7.9 1.5 -9.9 3.5 -11.5 11.5 c-1.6 -8 -3.6 -10 -11.5 -11.5 c7.9 -1.5 9.9 -3.5 11.5 -11.5 z" />
+          <circle cx="32" cy="31" r="2.4" opacity="0.6" />
+          <circle cx="9" cy="10" r="1.8" opacity="0.5" />
+        </svg>
+      );
+  }
+}
+
 export default function HomePage() {
   const { loc } = useI18n();
   const router = useRouter();
@@ -132,8 +189,11 @@ export default function HomePage() {
                   </span>
                 ))}
               </div>
-              <p className="max-w-[15rem] text-sm text-charcoal/70">
-                {loc({ sq: "Mijëra gra shqiptare po e përdorin AI-në çdo ditë.", en: "Thousands of Albanian women use AI every day." })}
+              <p className="max-w-[17rem] text-sm text-charcoal/70">
+                {loc({
+                  sq: "Ndihmojmë gratë shqiptare të mësojnë inteligjencën artificiale dhe promptimin.",
+                  en: "We help Albanian women learn artificial intelligence and prompting.",
+                })}
               </p>
             </div>
           </div>
@@ -158,7 +218,7 @@ export default function HomePage() {
                   className="vasha-card group block h-full p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-soft"
                 >
                   <span className={cn("grid h-12 w-12 place-items-center rounded-2xl transition-transform duration-300 group-hover:scale-110", accent.tile, accent.icon)}>
-                    <Icon name={m.icon} className="h-6 w-6" aria-hidden="true" />
+                    <MacroArt id={m.id} />
                   </span>
                   <h3 className="mt-4 font-semibold text-plum-700">{loc(m.name)}</h3>
                   <p className="mt-1 text-sm leading-relaxed text-muted">{loc(m.subtitle)}</p>
