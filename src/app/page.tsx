@@ -162,7 +162,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-5 max-w-md text-balance text-lg leading-relaxed text-charcoal/80">
               {loc({
-                sq: "Mjete, prompte dhe burime, të bëra për gratë shqiptare që duan të rriten, të punojnë dhe të ndërtojnë jetën që ëndërrojnë.",
+                sq: "Mjete, komanda dhe burime, të bëra për gratë shqiptare që duan të rriten, të punojnë dhe të ndërtojnë jetën që ëndërrojnë.",
                 en: "Tools, prompts and resources, made for Albanian women who want to grow, work and build the life they dream of.",
               })}
             </p>
@@ -172,7 +172,7 @@ export default function HomePage() {
                 <Icon name="ArrowRight" className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link href="/library" className={cn(buttonClasses("secondary", "lg"), "bg-white/80 backdrop-blur-sm")}>
-                {loc({ sq: "Shiko bibliotekën", en: "Browse the library" })}
+                {loc({ sq: "Shiko të gjitha komandat", en: "See all commands" })}
               </Link>
             </div>
             <div className="mt-7 flex items-center gap-3">
@@ -189,10 +189,10 @@ export default function HomePage() {
                   </span>
                 ))}
               </div>
-              <p className="max-w-[17rem] text-sm text-charcoal/70">
+              <p className="max-w-[20rem] text-base font-semibold leading-snug text-plum-700">
                 {loc({
-                  sq: "Ndihmojmë gratë shqiptare të mësojnë inteligjencën artificiale dhe promptimin.",
-                  en: "We help Albanian women learn artificial intelligence and prompting.",
+                  sq: "Ndihmojmë gratë shqiptare të mësojnë inteligjencën artificiale lehtë dhe shpejt.",
+                  en: "We help Albanian women learn artificial intelligence — easily and fast.",
                 })}
               </p>
             </div>
@@ -267,7 +267,7 @@ export default function HomePage() {
             <Reveal>
               <div className="flex items-center justify-between">
                 <h2 className="font-display text-2xl font-semibold text-plum-700">
-                  {loc({ sq: "Promptet më të përdorura", en: "Most-used prompts" })}
+                  {loc({ sq: "Komandat më të përdorura", en: "Most-used commands" })}
                 </h2>
                 <Link href="/library" className="inline-flex items-center gap-1 text-sm font-medium text-rose-600 hover:underline">
                   {loc({ sq: "Shiko të gjitha", en: "See all" })}
@@ -303,7 +303,7 @@ export default function HomePage() {
               </h3>
               <ul className="mt-4 space-y-2.5 text-sm text-charcoal/80">
                 {[
-                  { sq: "Prompte dhe ide çdo javë", en: "Prompts and ideas every week" },
+                  { sq: "Komanda dhe ide çdo javë", en: "Commands and ideas every week" },
                   { sq: "Sfida javore dhe këshilla praktike", en: "Weekly challenges and practical tips" },
                   { sq: "Mbështetje nga gra si ti", en: "Support from women like you" },
                   { sq: "Mësime falas për t'u rritur", en: "Free lessons to grow" },

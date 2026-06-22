@@ -105,10 +105,10 @@
     "unlimited": "Prova të pakufizuara (Premium)"
   },
   "library": {
-    "title": "Biblioteka e ideve",
-    "subtitle": "Ide gati për t'u përdorur. Kopjoji, përshtati ose provoji direkt në praktikë.",
-    "searchPlaceholder": "Kërko një ide… (p.sh. CV, intervistë, biznes)",
-    "noResults": "Nuk gjetëm asnjë ide. Provo një fjalë tjetër.",
+    "title": "Biblioteka e komandave",
+    "subtitle": "Komanda gati për t'u përdorur. Kopjoji, përshtati ose provoji direkt në praktikë.",
+    "searchPlaceholder": "Kërko një komandë… (p.sh. CV, intervistë, biznes)",
+    "noResults": "Nuk gjetëm asnjë komandë. Provo një fjalë tjetër.",
     "runInSandbox": "Provoje",
     "favorite": "Ruaje",
     "favorited": "E ruajtur",
@@ -116,7 +116,7 @@
     "rated": "Faleminderit për vlerësimin!",
     "onlyFavorites": "Vetëm të preferuarat",
     "showAll": "Trego të gjitha",
-    "resultsCount": "{n} ide"
+    "resultsCount": "{n} komanda"
   },
   "categories": {
     "work": "Punë",
@@ -172,7 +172,7 @@
     "markDone": "E bëra!",
     "done": "E përfunduar",
     "streak": "{n} ditë rresht",
-    "streakNone": "Nis vargun tënd sot",
+    "streakNone": "Nis rrugëtimin tënd sot",
     "doInSandbox": "Provoje në praktikë",
     "encouragement": "Krenare për ty!",
     "completedAll": "30 ditë të plota! Ke ndërtuar një shprehi të re. Urime!",

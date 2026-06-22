@@ -115,6 +115,8 @@ export async function POST(req: NextRequest) {
       "Content-Type": "text/event-stream; charset=utf-8",
       "Cache-Control": "no-cache, no-transform",
       Connection: "keep-alive",
+      // Disable proxy buffering so tokens stream to the browser immediately (Vercel/nginx).
+      "X-Accel-Buffering": "no",
     },
   });
 }
