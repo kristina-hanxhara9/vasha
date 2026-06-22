@@ -6,6 +6,7 @@ import { useI18n } from "@/lib/i18n/LanguageProvider";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { cn } from "@/lib/utils";
 
 const COUNTRIES = ["Shqipëri", "Kosovë", "Itali", "Gjermani", "Zvicër", "Mbretëri e Bashkuar", "SHBA", "Tjetër"];
 
@@ -17,6 +18,7 @@ function LoginInner() {
   const params = useSearchParams();
   const router = useRouter();
   const next = params.get("next") || "/account";
+  const [mode, setMode] = useState<"signup" | "login">(params.get("mode") === "login" ? "login" : "signup");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [sent, setSent] = useState(false);
@@ -35,7 +37,7 @@ function LoginInner() {
         email: email.trim(),
         options: {
           emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
-          data: country ? { country } : undefined,
+          data: mode === "signup" && country ? { country } : undefined,
         },
       });
       if (err) setError(err.message);
@@ -47,10 +49,32 @@ function LoginInner() {
     }
   };
 
+  const tab = (value: "signup" | "login", label: string) => (
+    <button
+      type="button"
+      onClick={() => setMode(value)}
+      className={cn(
+        "flex-1 rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
+        mode === value ? "bg-plum-500 text-white" : "text-plum-600 hover:bg-plum-100",
+      )}
+    >
+      {label}
+    </button>
+  );
+
   return (
     <div className="mx-auto max-w-md px-4 py-12 sm:px-6">
       <div className="vasha-card p-6 sm:p-8">
-        <h1 className="font-display text-2xl font-semibold text-plum-700">{t("auth.signInTitle")}</h1>
+        {isSupabaseConfigured ? (
+          <div className="mb-5 flex gap-1 rounded-full bg-plum-50 p-1">
+            {tab("signup", loc({ sq: "Regjistrohu", en: "Sign up" }))}
+            {tab("login", loc({ sq: "Hyr", en: "Log in" }))}
+          </div>
+        ) : null}
+
+        <h1 className="font-display text-2xl font-semibold text-plum-700">
+          {mode === "signup" ? t("auth.signUpTitle") : t("auth.signInTitle")}
+        </h1>
 
         {isSupabaseConfigured ? (
           sent ? (
@@ -70,33 +94,40 @@ function LoginInner() {
                   className={inputCls}
                 />
               </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium text-charcoal">
-                  {loc({ sq: "Vendi yt (opsionale)", en: "Your country (optional)" })}
-                </label>
-                <input
-                  list="vasha-countries-login"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                  placeholder={loc({ sq: "Shkruaj ose zgjidh…", en: "Type or choose…" })}
-                  className={inputCls}
-                />
-                <datalist id="vasha-countries-login">
-                  {COUNTRIES.map((c) => (
-                    <option key={c} value={c} />
-                  ))}
-                </datalist>
-                <p className="mt-1 text-xs text-muted">
-                  {loc({
-                    sq: "E përdorim vetëm për të të dhënë ndihmë lokale. Ti vendos.",
-                    en: "Used only to give you local help. You're in control.",
-                  })}
-                </p>
-              </div>
+
+              {mode === "signup" ? (
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-charcoal">
+                    {loc({ sq: "Vendi yt (opsionale)", en: "Your country (optional)" })}
+                  </label>
+                  <input
+                    list="vasha-countries-login"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    placeholder={loc({ sq: "Shkruaj ose zgjidh…", en: "Type or choose…" })}
+                    className={inputCls}
+                  />
+                  <datalist id="vasha-countries-login">
+                    {COUNTRIES.map((c) => (
+                      <option key={c} value={c} />
+                    ))}
+                  </datalist>
+                  <p className="mt-1 text-xs text-muted">
+                    {loc({
+                      sq: "E përdorim vetëm për të të dhënë ndihmë lokale. Ti vendos.",
+                      en: "Used only to give you local help. You're in control.",
+                    })}
+                  </p>
+                </div>
+              ) : null}
+
               <Button type="submit" fullWidth disabled={loading}>
                 <Icon name="Mail" className="h-4 w-4" aria-hidden="true" />
-                {t("auth.sendMagicLink")}
+                {mode === "signup" ? loc({ sq: "Regjistrohu falas", en: "Sign up free" }) : loc({ sq: "Hyr", en: "Log in" })}
               </Button>
+              <p className="text-center text-xs text-muted">
+                {loc({ sq: "Të dërgojmë një lidhje në email — pa fjalëkalim.", en: "We'll email you a link — no password." })}
+              </p>
               {error ? <p className="text-xs text-red-700">{error}</p> : null}
             </form>
           )
@@ -109,7 +140,7 @@ function LoginInner() {
         <div className="mt-6 border-t border-plum-100 pt-5 text-center">
           <button
             type="button"
-            onClick={() => router.push("/sandbox")}
+            onClick={() => router.push("/")}
             className="text-sm font-medium text-plum-700 hover:underline"
           >
             {t("auth.continueGuest")}

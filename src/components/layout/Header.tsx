@@ -68,7 +68,7 @@ export function Header() {
           ) : (
             <>
               <Link
-                href="/login"
+                href="/login?mode=login"
                 className="hidden text-sm font-medium text-plum-700 hover:underline sm:inline"
               >
                 {t("common.signIn")}
