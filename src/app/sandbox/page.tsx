@@ -112,9 +112,10 @@ function SandboxInner() {
     if (p) {
       const prompt = getPrompt(p);
       if (prompt) {
-        // Prefill the editable box — she reviews/edits, then clicks to run.
+        // Prefill the editable box with the fill-in template (brackets and all)
+        // — she replaces [the blanks] with her details, then clicks to run.
         setScenario(FREE_SCENARIO);
-        setInitialValues({ request: loc(prompt.body) });
+        setInitialValues({ request: loc(prompt.template ?? prompt.body) });
         return;
       }
     }

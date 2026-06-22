@@ -44,7 +44,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Georgia", "serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
       borderRadius: {
         xl: "1rem",

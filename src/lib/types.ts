@@ -71,6 +71,11 @@ export interface PromptItem {
   description: Localized;
   /** The ready-to-run text the woman sends to the AI (Albanian-first; may be a plain string). */
   body: Localized | string;
+  /** Fill-in-the-blank version of the request — blanks marked with [kllapa] she replaces.
+   *  Teaches the structure of a good command; falls back to `body` when absent. */
+  template?: Localized;
+  /** One short line: why this command works / what she learns by writing it this way. */
+  why?: Localized;
   /** Pin to the top of the library / feature on the home screen. */
   featured?: boolean;
   /** Optional scenario to open when "run in sandbox" is clicked. */

@@ -99,7 +99,7 @@ export default function HomePage() {
             </span>
             <h1 className="mt-5 text-balance font-display text-5xl font-semibold leading-[1.04] sm:text-6xl">
               <span className="block text-charcoal">{loc({ sq: "Ti mundesh.", en: "You can." })}</span>
-              <span className="block bg-gradient-to-r from-rose-500 to-plum-500 bg-clip-text font-display italic text-transparent">
+              <span className="block bg-gradient-to-r from-rose-500 to-plum-500 bg-clip-text font-serif text-[1.08em] italic text-transparent">
                 {loc({ sq: "Ne të mbështesim.", en: "We support you." })}
               </span>
             </h1>
@@ -274,7 +274,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
         <Reveal>
           <div className="rounded-[2.5rem] border border-rose-100 bg-gradient-to-r from-rose-50 via-white to-rose-50 px-6 py-14">
-            <p className="text-center font-display text-2xl italic text-rose-500 sm:text-3xl">
+            <p className="text-center font-serif text-3xl italic text-rose-500 sm:text-4xl">
               {loc({ sq: "Ti je e zonja. Ti je e pathyeshme.", en: "You are capable. You are unbreakable." })}
             </p>
           </div>

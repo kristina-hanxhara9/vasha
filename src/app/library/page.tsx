@@ -6,6 +6,7 @@ import { useI18n } from "@/lib/i18n/LanguageProvider";
 import { PROMPTS } from "@/lib/content/prompts";
 import { CATEGORIES, categoryName } from "@/lib/content/categories";
 import { PromptCard } from "@/components/library/PromptCard";
+import { KomandaGuide } from "@/components/library/KomandaGuide";
 import { SectionHeading } from "@/components/ui/Card";
 import { EmptyState } from "@/components/ui/misc";
 import { Icon } from "@/components/ui/Icon";
@@ -49,6 +50,10 @@ function LibraryInner() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
       <SectionHeading title={t("library.title")} subtitle={t("library.subtitle")} />
+
+      <div className="mt-6">
+        <KomandaGuide />
+      </div>
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="relative flex-1">

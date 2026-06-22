@@ -6,6 +6,7 @@ import type { PromptItem } from "@/lib/types";
 import { useI18n } from "@/lib/i18n/LanguageProvider";
 import { Icon } from "@/components/ui/Icon";
 import { buttonClasses } from "@/components/ui/Button";
+import { TemplateText } from "./TemplateText";
 import { favorites, ratings } from "@/lib/local";
 import { copyText } from "@/lib/clipboard";
 import { categoryName, categoryAccent } from "@/lib/content/categories";
@@ -38,8 +39,10 @@ export function PromptCard({ prompt }: { prompt: PromptItem }) {
     setRating(ratings.get(prompt.id) ?? 0);
   }, [prompt.id]);
 
+  const commandText = loc(prompt.template ?? prompt.body);
+
   const copy = async () => {
-    await copyText(loc(prompt.body));
+    await copyText(commandText);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   };
@@ -82,9 +85,33 @@ export function PromptCard({ prompt }: { prompt: PromptItem }) {
         {categoryName(prompt.category, loc)}
       </span>
       <h3 className="mt-2 font-medium text-plum-700">{loc(prompt.title)}</h3>
-      <p className="mt-1 flex-1 text-sm leading-relaxed text-muted">{loc(prompt.description)}</p>
+      <p className="mt-1 text-sm leading-relaxed text-muted">{loc(prompt.description)}</p>
 
-      <div className="mt-3">
+      <div className="mt-3 rounded-xl border border-plum-100 bg-plum-50/40 p-3">
+        <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-plum-400">
+          {loc(
+            prompt.template
+              ? { sq: "Plotëso pjesët në kllapa", en: "Fill in the brackets" }
+              : { sq: "Komanda gati", en: "Ready-to-send command" },
+          )}
+        </p>
+        <div className="whitespace-pre-line text-sm leading-relaxed text-charcoal/80">
+          <TemplateText text={commandText} />
+        </div>
+      </div>
+
+      {prompt.why ? (
+        <p className="mt-2 text-xs leading-relaxed text-muted">
+          <span className="font-medium text-plum-500">
+            {loc({ sq: "Pse funksionon: ", en: "Why it works: " })}
+          </span>
+          {loc(prompt.why)}
+        </p>
+      ) : null}
+
+      <div className="mt-3 flex-1" />
+
+      <div>
         <StarRating
           value={rating}
           onRate={(n) => {
