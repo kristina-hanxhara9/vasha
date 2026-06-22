@@ -156,7 +156,7 @@ export default function HomePage() {
             </span>
             <h1 className="mt-5 text-balance font-display text-5xl font-semibold leading-[1.04] sm:text-6xl">
               <span className="block text-charcoal">{loc({ sq: "Ti mundesh.", en: "You can." })}</span>
-              <span className="block bg-gradient-to-r from-rose-500 to-plum-500 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-rose-500 to-plum-500 bg-clip-text font-display italic text-transparent">
                 {loc({ sq: "Ne të mbështesim.", en: "We support you." })}
               </span>
             </h1>
@@ -175,26 +175,27 @@ export default function HomePage() {
                 {loc({ sq: "Shiko të gjitha komandat", en: "See all commands" })}
               </Link>
             </div>
-            <div className="mt-7 flex items-center gap-3">
-              <div className="flex -space-x-2">
-                {["E", "A", "B", "D"].map((i, idx) => (
-                  <span
-                    key={i}
-                    className={cn(
-                      "grid h-9 w-9 place-items-center rounded-full border-2 border-ivory text-xs font-medium text-white",
-                      ["bg-rose-500", "bg-coral-500", "bg-lavender-500", "bg-plum-400"][idx],
-                    )}
-                  >
-                    {i}
-                  </span>
-                ))}
-              </div>
-              <p className="max-w-[20rem] text-base font-semibold leading-snug text-plum-700">
+            <div className="mt-7">
+              <p className="max-w-[23rem] text-base font-semibold leading-snug text-plum-700">
                 {loc({
                   sq: "Ndihmojmë gratë shqiptare të mësojnë inteligjencën artificiale lehtë dhe shpejt.",
                   en: "We help Albanian women learn artificial intelligence — easily and fast.",
                 })}
               </p>
+              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                {[
+                  { sq: "Plotësisht falas", en: "Completely free" },
+                  { sq: "Në shqip", en: "In Albanian" },
+                  { sq: "Pa njohuri teknike", en: "No tech skills" },
+                ].map((it, i) => (
+                  <li key={i} className="inline-flex items-center gap-1.5 text-sm font-medium text-charcoal/80">
+                    <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-rose-500 text-white">
+                      <Icon name="Check" className="h-3 w-3" aria-hidden="true" />
+                    </span>
+                    {loc(it)}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -337,7 +338,7 @@ export default function HomePage() {
       {/* ---------------- Final CTA ---------------- */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-plum-600 to-plum-700 px-6 py-14 text-center text-white sm:px-12">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-rose-500 to-plum-700 px-6 py-14 text-center text-white sm:px-12">
             <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-rose-500/20 blur-2xl" aria-hidden="true" />
             <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-gold-500/20 blur-2xl" aria-hidden="true" />
             <h2 className="relative font-display text-3xl font-semibold sm:text-4xl">

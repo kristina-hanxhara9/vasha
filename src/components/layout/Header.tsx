@@ -75,7 +75,7 @@ export function Header() {
               </Link>
               <Link
                 href="/sandbox"
-                className={cn(buttonClasses("primary", "sm"), "hidden sm:inline-flex")}
+                className={cn(buttonClasses("rose", "sm"), "hidden sm:inline-flex")}
               >
                 {t("common.getStarted")}
               </Link>
